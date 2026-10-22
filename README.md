@@ -23,7 +23,7 @@ Use o Harness v0.2.3 ou superior. Na raiz deste repositório:
 harness validate package
 harness generate package --target claude-code
 harness validate package
-harness pack package -o agent-md2poui-1.0.0.tar.gz
+harness pack package -o agent-md2poui-1.0.1.tar.gz
 ```
 
 O diretório `package/` contém somente o conteúdo publicável. A raiz fica disponível para documentação e workflow de release. O pacote preserva os contratos Agent Plugins e a extensão de Agents do Smart Harness.
@@ -32,7 +32,7 @@ O diretório `package/` contém somente o conteúdo publicável. A raiz fica dis
 
 1. Faça a alteração em uma branch e revise o PR antes de integrar.
 2. Atualize `version` em `package/plugin.json` e execute os comandos de validação, geração e empacotamento acima, ajustando o nome do arquivo.
-3. Crie uma tag correspondente à versão, como `v1.0.0`, no commit revisado. Publique um GitHub Release dessa tag com o arquivo `.tar.gz` gerado como asset. Cada Release deve conter exatamente um pacote `.tar.gz`.
+3. Crie uma tag correspondente à versão, como `v1.0.1`, no commit revisado. Publique um GitHub Release dessa tag com o arquivo `.tar.gz` gerado como asset. Cada Release deve conter exatamente um pacote `.tar.gz`.
 4. No Marketplace, use **Publicar do GitHub**, cadastre `nelsonfrugeri-tech/agent-md2poui` e sincronize a tag. Para as próximas versões, selecione o repositório já cadastrado.
 
 O arquivo fica no GitHub. O Harness valida o pacote e registra catálogo, revisão e SHA-256 no SQLite. Publicar novamente a mesma versão com outro conteúdo é recusado; use uma nova versão. Este repositório é privado e a credencial de leitura fica no servidor.
@@ -46,7 +46,7 @@ harness agents install agent-md2poui
 harness agents check agent-md2poui
 ```
 
-A instalação prepara também os runtimes Graphify e deja-vu incluídos no pacote. Abra o Claude no checkout do código `md2poui`:
+A instalação prepara também os runtimes Graphify e deja-vu incluídos no pacote. O agente aceita os namespaces dos cinco MCPs tanto deste pacote quanto das Tools instaladas separadamente, pois o Claude pode expor apenas uma cópia de cada serviço. As permissões continuam limitadas aos mesmos cinco serviços. Abra o Claude no checkout do código `md2poui`:
 
 ```sh
 claude --agent agent-md2poui:md2poui

@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "agent-md2poui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Onboarding and development assistant for md2poui with GitHub, Trello, Notion, Graphify and deja-vu.",
   "author": {
     "name": "Nelson Frugeri"

@@ -11,6 +11,11 @@ tools:
   - mcp:notion
   - mcp:graphify
   - mcp:deja-vu
+  - connector:github
+  - connector:trello
+  - connector:notion
+  - connector:graphify
+  - connector:deja-vu
 skills:
   - md2poui-onboarding
   - md2poui-cli-options
@@ -26,7 +31,7 @@ At the start, call Skill with `agent-md2poui:md2poui-onboarding`. Then load only
 
 Establish the local repository, current commit, worktree status and task before writing. The intended code fork is `nelsonfrugeri-tech/md2poui`; this plugin's repository, `nelsonfrugeri-tech/agent-md2poui`, stores assistant instructions, not the application. Verify the remote and current user scope. Never push to `totvs/md2poui` or overwrite another contributor's work.
 
-Use the five MCPs as needed, based on the tools actually exposed by the session:
+Use the five MCPs as needed, based on the tools actually exposed by the session. Claude Code may expose a service under this package's namespace or its standalone Tool plugin's namespace when both are installed. Use the available namespace for the same service; do not require both copies or expand access to other services:
 
 - GitHub: inspect the authorized repository, relevant source, issue and PR. Verify local and remote revisions before making claims about their state. The current gateway catalog is read-only; use local git/gh for explicitly authorized writes only when available and authenticated.
 - Trello: read the selected story and acceptance criteria. Discover permitted boards with `trello_list_boards`, use the returned board ID in subsequent calls, and follow cursors when needed. A card short link or board display name is not a board ID.
